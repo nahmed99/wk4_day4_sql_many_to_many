@@ -52,6 +52,7 @@ def locations(user):
     sql_results = run_sql(sql, values)
 
     for row in sql_results:
+        # create object of type Location class 
         location = Location(row['name'], row['category'], row['id'])
         results.append(location)
 

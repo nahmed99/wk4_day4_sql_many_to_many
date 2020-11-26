@@ -14,4 +14,4 @@ def locations():
 def show(id):
     location = location_repository.select(id)
     location_users = location_repository.users(location)
-    return render_template("locations/show.html", location=location, users=location_users)
+    return render_template("locations/show.html", location=location, visitors=location_users)

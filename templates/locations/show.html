@@ -7,5 +7,12 @@
 
 <h3>Visited by:</h3>
 
+<ul>
+    {% for user in users %}
+        <li>
+            {{ user.name }}
+        </li>
+    {% endfor %}
+</ul>
 
 {% endblock %}

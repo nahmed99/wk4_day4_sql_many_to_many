@@ -38,37 +38,19 @@ def delete_all():
     run_sql(sql)
 
 
-
 def users(location):
     users = []
-
     sql = """SELECT users.* FROM users
-                INNER JOIN visits ON users.id = visits.user_id
-                INNER JOIN locations ON locations.id = visits.location_id
-                WHERE locations.id = %s"""
+             INNER JOIN visits ON users.id = visits.user_id
+             INNER JOIN locations ON locations.id = visits.location_id
+             WHERE locations.id = %s"""
 
     values = [location.id]
-
     sql_results = run_sql(sql, values)
 
     for row in sql_results:
-        # create object of type User class 
+        # create object of type User class
         user = User(row['name'], row['id'])
         users.append(user)
-
+        
     return users
-
-
-    # The code below works - just in case the one above doesn't work!!!
-    # def users(location):
-        # users = []
-        # sql = """SELECT users.* FROM users
-        #             INNER JOIN visits ON users.id = visits.user_id
-        #             INNER JOIN locations ON locations.id = visits.location_id
-        #             WHERE locations.id = %s"""
-        # values = [location.id]
-        # sql_results = run_sql(sql, values)
-        # for row in sql_results:
-        #     user = User(row['name'], row['id'])
-        #     users.append(user)
-        # return users
